@@ -29,19 +29,15 @@
 	<table width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
 		<tr>
 			<th>系统名称</th>
-			<td>慕课网电子商城</td>
+			<td>绿野沼气池管理系统</td>
 		</tr>
 		<tr>
 			<th>开发团队</th>
-			<td>Ray&慕课网的小伙伴</td>
+			<td>绿野沼气技术研究所</td>
 		</tr>
 		<tr>
-			<th>公司网址</th>
-			<td><a href="http://www.imooc.com">http://www.imooc.com</a></td>
-		</tr>
-		<tr>
-			<th>成功案例</th>
-			<td>慕课网</td>
+			<th>公司地址</th>
+			<td>福建省南安市东田镇湖山村绿野沼气技术研究所</td>
 		</tr>
 	</table>
 </center>
