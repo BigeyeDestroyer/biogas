@@ -53,10 +53,10 @@ checkLogined();
                         </dl>
                     </li>
                     <li>
-                        <h3><span onclick="show('menu2','change2')" id="change2">+</span>分类管理</h3>
+                        <h3><span onclick="show('menu2','change2')" id="change2">+</span>省份管理</h3>
                         <dl id="menu2" style="display:none;">
-                        	<dd><a href="addCate.php" target="mainFrame">添加分类</a></dd>
-                            <dd><a href="listCate.php" target="mainFrame">分类列表</a></dd>
+                        	<dd><a href="addCate.php" target="mainFrame">添加省份</a></dd>
+                            <dd><a href="listCate.php" target="mainFrame">省份列表</a></dd>
                         </dl>
                     </li>
                     <li>

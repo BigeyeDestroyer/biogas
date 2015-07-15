@@ -5,16 +5,16 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h3>添加分类</h3>
+<h3>添加省份</h3>
 <form action="doAdminAction.php?act=addCate" method="post">
     <table width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
         <tr>
-            <td align="right">分类名称</td>
-            <td><input type="text" name="cName" placeholder="请输入分类名称"/></td>
+            <td align="left">省份名称</td>
+            <td><input type="text" name="province" placeholder="请输入省份名称"/></td>
         </tr>
 
         <tr>
-            <td colspan="2"><input type="submit" value="添加分类"/></td>
+            <td colspan="2"><input type="submit" value="添加省份"/></td>
         </tr>
 
     </table>

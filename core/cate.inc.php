@@ -11,10 +11,10 @@
  * */
 function addCate(){
     $arr=$_POST;
-    if(insert("imooc_cate",$arr)){
-        $mes="Add successfully!<br/><a href='addCate.php'>Go on adding!</a>|<a href='listCate.php'>Look up the list!</a>";
+    if(insert("biogas_prov",$arr)){
+        $mes="添加成功!<br/><a href='addCate.php'>继续添加!</a>|<a href='listCate.php'>查看列表!</a>";
     }else{
-        $mes="Failed to add!<br/><a href='addCate.php'>Try again!</a>|<a href='listCate.php'>Look up the list!</a>";
+        $mes="添加失败!<br/><a href='addCate.php'>重新添加!</a>|<a href='listCate.php'>查看列表!</a>";
     }
     return $mes;
 }
@@ -22,7 +22,7 @@ function addCate(){
  * Get info according to the id
  * */
 function getCateById($id){
-    $sql="select id,cName from imooc_cate where id={$id}";
+    $sql="select id,province from biogas_prov where id={$id}";
     return fetchOne($sql);
 }
 
@@ -31,10 +31,10 @@ function getCateById($id){
  * */
 function editCate($where){
     $arr=$_POST;
-    if(update("imooc_cate",$arr,$where)){
-        $mes="Successfully modified!<br/><a href='listCate.php'>Look up the list!</a>";
+    if(update("biogas_prov",$arr,$where)){
+        $mes="修改成功!<br/><a href='listCate.php'>查看列表!</a>";
     }else{
-        $mes="Modification failed!<br/><a href='listCate.php'>Try again!</a>";
+        $mes="修改失败!<br/><a href='listCate.php'>重新修改!</a>";
     }
     return $mes;
 }
@@ -43,10 +43,10 @@ function editCate($where){
  * Delete cate
  * */
 function delCate($where){
-    if(delete("imooc_cate",$where)){
-        $mes="Delete Successfully!<br/><a href='listCate.php'>Look up the list!</a>|<a href='addCate.php'>Add cate!</a>";
+    if(delete("biogas_prov",$where)){
+        $mes="删除成功!<br/><a href='listCate.php'>查看列表!</a>|<a href='addCate.php'>添加省份!</a>";
     }else{
-        $mes="Delete Failed!<br/><a href='listCate.php'>Try again!</a>";
+        $mes="删除失败!<br/><a href='listCate.php'>重新删除!</a>";
     }
     return $mes;
 }

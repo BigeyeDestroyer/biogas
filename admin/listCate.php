@@ -1,8 +1,8 @@
 <?php
 require_once '../include.php';
-$pageSize=2;
+$pageSize=4;
 @$page=$_REQUEST['page']?(int)$_REQUEST['page']:1;// “@”表示：即使有错误也不要输出，不过我们之前的warning是notice类型，所以无所谓
-$sql="select * from imooc_cate";
+$sql="select * from biogas_prov";
 $totalRows=getResultNum($sql);
 $totalPage=ceil($totalRows/$pageSize);
 if($page<1||$page==null||!is_numeric($page)){
@@ -12,10 +12,10 @@ if($page>=$totalPage){
     $page=$totalPage;
 }
 $offset=($page-1)*$pageSize;
-$sql="select id,cName from imooc_cate order by id asc limit {$offset},{$pageSize}";
+$sql="select id,province from biogas_prov order by id asc limit {$offset},{$pageSize}";
 $rows=fetchAll($sql);
 if(!$rows){
-    alertMes("Sorry, no cate, add first!", "addCate.php");
+    alertMes("对不起, 没有省份, 请先添加!", "addCate.php");
 }
 ?>
 
@@ -39,7 +39,7 @@ if(!$rows){
         <thead>
         <tr>
             <th width="15%">编号</th>
-            <th width="25%">分类名称</th>
+            <th width="25%">省份名称</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -48,7 +48,7 @@ if(!$rows){
             <tr>
                 <!--这里的id和for里面的c1 需要循环出来-->
                 <td><input type="checkbox" id="c1" class="check"><label for="c1" class="label"><?php echo $row['id'];?></label></td>
-                <td><?php echo $row['cName'];?></td>
+                <td><?php echo $row['province'];?></td>
                 <td align="center"><input type="button" value="修改" class="btn" onclick="editCate(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn" onclick="delCate(<?php echo $row['id'];?>)"></td>
             </tr>
             <?php endforeach;?>
@@ -70,7 +70,7 @@ if(!$rows){
         window.location="editCate.php?id="+id;
     }
     function delCate(id){
-        if(window.confirm("Sure to delete? Can't recover after delete!!!")){
+        if(window.confirm("确认删除? 删除后无法恢复!!!")){
             window.location="doAdminAction.php?act=delCate&id="+id;
         }
 

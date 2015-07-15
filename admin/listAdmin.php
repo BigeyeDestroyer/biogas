@@ -1,7 +1,7 @@
 <?php
 require_once '../include.php';
 
-$pageSize=2;
+$pageSize=4;
 @$page=$_REQUEST['page']?(int)$_REQUEST['page']:1; // “@”表示：即使有错误也不要输出，不过我们之前的warning是notice类型，所以无所谓
 //$rows=getAdminByPage($page,$pageSize);
 $sql="select * from biogas_admin";

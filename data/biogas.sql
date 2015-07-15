@@ -28,3 +28,12 @@ CREATE TABLE `biogas_user`(
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- the province table
+DROP TABLE IF EXISTS `biogas_prov`;
+CREATE TABLE `biogas_prov` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `province` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `province` (`province`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
