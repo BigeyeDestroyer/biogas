@@ -20,15 +20,24 @@ if($act=="logout"){
     $mes=editAdmin($id);
 }elseif($act=="delAdmin"){
     $mes=delAdmin($id);
-}elseif($act=="addCate"){
-    $mes=addCate();
-}elseif($act=="editCate"){
+}elseif($act=="addProv"){
+    $mes=addProv();
+}elseif($act=="editProv"){
     $where="id={$id}";
-    $mes=editCate($where);
-}elseif($act=="delCate"){
+    $mes=editProv($where);
+}elseif($act=="delProv"){
     $where="id={$id}";
-    $mes=delCate($where);
+    $mes=delProv($where);
+}elseif($act=="addCity"){
+    $mes=addCity();
+}elseif($act=="editCity"){
+    $where="id={$id}";
+    $mes=editCity($where);
+}elseif($act=="delCity"){
+    $where="id={$id}";
+    $mes=delCity($where);
 }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

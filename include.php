@@ -17,5 +17,6 @@ require_once 'string.func.php';
 require_once 'upload.func.php';
 require_once 'configs.php';
 require_once 'admin.inc.php';
-require_once 'cate.inc.php';
+require_once 'prov.inc.php';
+require_once 'city.inc.php';
 connect();

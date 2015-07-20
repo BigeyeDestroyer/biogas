@@ -15,7 +15,7 @@ $offset=($page-1)*$pageSize;
 $sql="select id,province from biogas_prov order by id asc limit {$offset},{$pageSize}";
 $rows=fetchAll($sql);
 if(!$rows){
-    alertMes("对不起, 没有省份, 请先添加!", "addCate.php");
+    alertMes("对不起, 没有省份, 请先添加!", "addProv.php");
 }
 ?>
 
@@ -30,7 +30,7 @@ if(!$rows){
 <div class="details">
     <div class="details_operation clearfix">
         <div class="bui_select">
-            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addCate()">
+            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addProv()">
         </div>
 
     </div>
@@ -49,7 +49,7 @@ if(!$rows){
                 <!--这里的id和for里面的c1 需要循环出来-->
                 <td><input type="checkbox" id="c1" class="check"><label for="c1" class="label"><?php echo $row['id'];?></label></td>
                 <td><?php echo $row['province'];?></td>
-                <td align="center"><input type="button" value="修改" class="btn" onclick="editCate(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn" onclick="delCate(<?php echo $row['id'];?>)"></td>
+                <td align="center"><input type="button" value="修改" class="btn" onclick="editProv(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn" onclick="delProv(<?php echo $row['id'];?>)"></td>
             </tr>
             <?php endforeach;?>
         <?php if($totalRows>$pageSize):?>
@@ -63,15 +63,15 @@ if(!$rows){
 </body>
 
 <script type="text/javascript">
-    function addCate(){
-        window.location="addCate.php";
+    function addProv(){
+        window.location="addProv.php";
     }
-    function editCate(id){
-        window.location="editCate.php?id="+id;
+    function editProv(id){
+        window.location="editProv.php?id="+id;
     }
-    function delCate(id){
+    function delProv(id){
         if(window.confirm("确认删除? 删除后无法恢复!!!")){
-            window.location="doAdminAction.php?act=delCate&id="+id;
+            window.location="doAdminAction.php?act=delProv&id="+id;
         }
 
     }

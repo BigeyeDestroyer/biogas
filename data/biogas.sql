@@ -19,11 +19,11 @@ CREATE TABLE `biogas_user`(
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `capacity` decimal(10, 2) NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
+  `pId` smallint(5) unsigned NOT NULL,
+  `cId` smallint(5) unsigned NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(50) NOT NULL,
+  `uDesc` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -35,5 +35,13 @@ CREATE TABLE `biogas_prov` (
   `province` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `province` (`province`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `biogas_city`;
+CREATE TABLE `biogas_city` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `city` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `city` (`city`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

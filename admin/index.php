@@ -46,26 +46,24 @@ checkLogined();
                 <div class="title">管理员</div>
                 <ul class="mList">
                     <li>
-                        <h3><span onclick="show('menu1','change1')" id="change1">+</span>商品管理</h3>
+                        <h3><span onclick="show('menu1','change1')" id="change1">+</span>用户管理</h3>
                         <dl id="menu1" style="display:none;">
-                        	<dd><a href="addPro.php" target="mainFrame">添加商品</a></dd>
-                            <dd><a href="listPro.php" target="mainFrame">商品列表</a></dd>
+                        	<dd><a href="addUser.php" target="mainFrame">添加用户</a></dd>
+                            <dd><a href="listPro.php" target="mainFrame">用户列表</a></dd>
                         </dl>
                     </li>
                     <li>
                         <h3><span onclick="show('menu2','change2')" id="change2">+</span>省份管理</h3>
                         <dl id="menu2" style="display:none;">
-                        	<dd><a href="addCate.php" target="mainFrame">添加省份</a></dd>
-                            <dd><a href="listCate.php" target="mainFrame">省份列表</a></dd>
+                            <dd><a href="addProv.php" target="mainFrame">添加省份</a></dd>
+                            <dd><a href="listProv.php" target="mainFrame">省份列表</a></dd>
                         </dl>
                     </li>
                     <li>
-                        <h3><span  onclick="show('menu3','change3')" id="change3" >+</span>订单管理</h3>
+                        <h3><span onclick="show('menu3','change3')" id="change3">+</span>城市管理</h3>
                         <dl id="menu3" style="display:none;">
-                            <dd><a href="#">订单修改</a></dd>
-                            <dd><a href="#">订单又修改</a></dd>
-                            <dd><a href="#">订单总是修改</a></dd>
-                            <dd><a href="#">测试内容你看着改</a></dd>
+                            <dd><a href="addCity.php" target="mainFrame">添加城市</a></dd>
+                            <dd><a href="listCity.php" target="mainFrame">城市列表</a></dd>
                         </dl>
                     </li>
                     <li>
