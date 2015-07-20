@@ -56,7 +56,7 @@ function verifyImage($type = 1, $length = 4, $pixel = 0, $line = 0, $sess_name =
  * 生成缩略图
  *
  * */
-/*function thumb($filename,$destination=null,$dst_w=null,$dst_h=null,$isReservedSource=false,$scale=0.5){
+function thumb($filename,$destination=null,$dst_w=null,$dst_h=null,$isReservedSource=false,$scale=0.5){
     list($src_w,$src_h,$imagetype)=getimagesize($filename);
     if(is_null($dst_w)||is_null($dst_h)){
         $dst_w=ceil($src_w*$scale);
@@ -82,4 +82,3 @@ function verifyImage($type = 1, $length = 4, $pixel = 0, $line = 0, $sess_name =
     }
     return $dstFilename;
 }
-*/
