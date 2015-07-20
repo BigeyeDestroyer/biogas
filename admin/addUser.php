@@ -7,7 +7,7 @@ if(!$rows){
 }
 $rows_city=getAllCity();
 if(!$rows_city){
-    alertMes("没有相应城市，请先添加成熟!!","addCity.php");
+    alertMes("没有相应城市，请先添加城市!!","addCity.php");
 }
 ?>
 
