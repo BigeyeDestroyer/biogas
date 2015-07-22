@@ -53,39 +53,28 @@ function editUser($id){
 
 /*!!! editUser() 函数没有问题 !!! */
 
-function delPro($id){
+function delUser($id){
 	$where="id=$id";
-	$res=delete("imooc_pro",$where);
-	$proImgs=getAllImgByProId($id);
-	if($proImgs&&is_array($proImgs)){
-		foreach($proImgs as $proImg){
-			if(file_exists("uploads/".$proImg['albumPath'])){
-				unlink("uploads/".$proImg['albumPath']);
+	$res=delete("biogas_user",$where);
+	$userImgs=getAllImgByUserId($id);
+	if($userImgs&&is_array($userImgs)){
+		foreach($userImgs as $userImg){
+			if(file_exists("../uploads/".$userImg['albumPath'])){
+				unlink("../uploads/".$userImg['albumPath']);
 			}
-			if(file_exists("../image_50/".$proImg['albumPath'])){
-				unlink("../image_50/".$proImg['albumPath']);
-			}
-			if(file_exists("../image_220/".$proImg['albumPath'])){
-				unlink("../image_220/".$proImg['albumPath']);
-			}
-			if(file_exists("../image_350/".$proImg['albumPath'])){
-				unlink("../image_350/".$proImg['albumPath']);
-			}
-			if(file_exists("../image_800/".$proImg['albumPath'])){
-				unlink("../image_800/".$proImg['albumPath']);
-			}
-			
 		}
 	}
-	$where1="pid={$id}";
-	$res1=delete("imooc_album",$where1);
+	$where1="uid={$id}";
+	$res1=delete("biogas_album",$where1);
 	if($res&&$res1){
-		$mes="删除成功!<br/><a href='listPro.php' target='mainFrame'>查看商品列表</a>";
+		$mes="删除成功!<br/><a href='listUser.php' target='mainFrame'>查看用户列表</a>";
 	}else{
-		$mes="删除失败!<br/><a href='listPro.php' target='mainFrame'>重新删除</a>";
+		$mes="删除失败!<br/><a href='listUser.php' target='mainFrame'>重新删除</a>";
 	}
 	return $mes;
 }
+
+/*!!! delUser() 函数没有问题 !!!*/
 
 
 /**
