@@ -8,6 +8,9 @@ header("content-type:text/html;charset=utf-8");
 //$size=$_FILES['myFile']['size'];
 
 function buildInfo(){
+    if(!$_FILES){
+        return ;
+    }
     $i=0;
     foreach($_FILES as $v){
         // 单文件
@@ -35,6 +38,9 @@ function uploadFile($path="uploads",$allowExt=array("gif","jpeg","png","jpg","wb
     }
     $files=buildInfo();
     $i=0;
+    if(!($files&&is_array($files))){
+        return ;
+    }
     foreach($files as $file){
         if($file['error']==UPLOAD_ERR_OK){
             $ext=getExt($file['name']);

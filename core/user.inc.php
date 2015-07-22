@@ -29,52 +29,29 @@ function addUser(){
  * @param int $id
  * @return string
  */
-function editPro($id){
+function editUser($id){
 	$arr=$_POST;
-	$path="./uploads";
+	$path="../uploads";
 	$uploadFiles=uploadFile($path);
-	if(is_array($uploadFiles)&&$uploadFiles){
-		foreach($uploadFiles as $key=>$uploadFile){
-			thumb($path."/".$uploadFile['name'],"../image_50/".$uploadFile['name'],50,50);
-			thumb($path."/".$uploadFile['name'],"../image_220/".$uploadFile['name'],220,220);
-			thumb($path."/".$uploadFile['name'],"../image_350/".$uploadFile['name'],350,350);
-			thumb($path."/".$uploadFile['name'],"../image_800/".$uploadFile['name'],800,800);
-		}
-	}
 	$where="id={$id}";
-	$res=update("imooc_pro",$arr,$where);
-	$pid=$id;
-	if($res&&$pid){
+	$res=update("biogas_user",$arr,$where);
+	$uid=$id;
+	if($res&&$uid){
 		if($uploadFiles &&is_array($uploadFiles)){
 			foreach($uploadFiles as $uploadFile){
-				$arr1['pid']=$pid;
+				$arr1['uid']=$uid;
 				$arr1['albumPath']=$uploadFile['name'];
 				addAlbum($arr1);
 			}
 		}
-		$mes="<p>编辑成功!</p><a href='listPro.php' target='mainFrame'>查看商品列表</a>";
+		$mes="<p>编辑成功!</p><a href='listUser.php' target='mainFrame'>查看用户列表</a>";
 	}else{
-	if(is_array($uploadFiles)&&$uploadFiles){
-		foreach($uploadFiles as $uploadFile){
-			if(file_exists("../image_800/".$uploadFile['name'])){
-				unlink("../image_800/".$uploadFile['name']);
-			}
-			if(file_exists("../image_50/".$uploadFile['name'])){
-				unlink("../image_50/".$uploadFile['name']);
-			}
-			if(file_exists("../image_220/".$uploadFile['name'])){
-				unlink("../image_220/".$uploadFile['name']);
-			}
-			if(file_exists("../image_350/".$uploadFile['name'])){
-				unlink("../image_350/".$uploadFile['name']);
-			}
-		}
-	}
-		$mes="<p>编辑失败!</p><a href='listPro.php' target='mainFrame'>重新编辑</a>";
-		
+		$mes="<p>编辑失败!</p><a href='listUser.php' target='mainFrame'>重新编辑</a>";
 	}
 	return $mes;
 }
+
+/*!!! editUser() 函数没有问题 !!! */
 
 function delPro($id){
 	$where="id=$id";
@@ -135,15 +112,16 @@ function getAllImgByUserId($id){
 /* !!! getAllImgByUserId() 函数没有问题 !!! */
 
 /**
- * 根据id得到商品的详细信息
+ * 根据id得到用户的详细信息
  * @param int $id
  * @return array
  */
-function getProById($id){
-		$sql="select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.id={$id}";
-		$row=fetchOne($sql);
-		return $row;
+function getUserById($id){
+    $sql="select u.id,u.username,u.pId,u.cId,u.capacity,u.address,u.phone,u.uDesc,u.pubTime,p.province, c.city from biogas_user as u join biogas_prov p on u.pId=p.id join biogas_city c on u.cId=c.id where u.id={$id}";
+    $row=fetchOne($sql);
+	return $row;
 }
+/* !!! getUserById() 函数没有问题 !!! */
 /**
  * 检查分类下是否有产品
  * @param int $cid
