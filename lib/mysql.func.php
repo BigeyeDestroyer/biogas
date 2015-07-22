@@ -91,7 +91,13 @@ function getResultNum($sql){
     return mysql_num_rows($result);
 }
 
-
+/**
+ * 得到上一步插入记录的ID号
+ * @return number
+ */
+function getInsertId(){
+    return mysql_insert_id();
+}
 
 
 

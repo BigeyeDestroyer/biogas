@@ -47,7 +47,7 @@ if(!$rows_city){
 </head>
 <body>
 <h3>添加用户</h3>
-<form action="doAdminAction.php?act=addPro" method="post" enctype="multipart/form-data">
+<form action="doAdminAction.php?act=addUser" method="post" enctype="multipart/form-data">
 <table width="70%"  border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
 	<tr>
 		<td align="right">用户姓名</td>
@@ -75,7 +75,7 @@ if(!$rows_city){
     </tr>
     <tr>
         <td align="right">池容</td>
-        <td><input type="number" name="capacity"  placeholder="请输入池容"/></td>
+        <td><input type="text" name="capacity"  placeholder="请输入池容"/></td>
     </tr>
 
 	<tr>

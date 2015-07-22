@@ -49,7 +49,7 @@ checkLogined();
                         <h3><span onclick="show('menu1','change1')" id="change1">+</span>用户管理</h3>
                         <dl id="menu1" style="display:none;">
                         	<dd><a href="addUser.php" target="mainFrame">添加用户</a></dd>
-                            <dd><a href="listPro.php" target="mainFrame">用户列表</a></dd>
+                            <dd><a href="listUser.php" target="mainFrame">用户列表</a></dd>
                         </dl>
                     </li>
                     <li>

@@ -19,4 +19,6 @@ require_once 'configs.php';
 require_once 'admin.inc.php';
 require_once 'prov.inc.php';
 require_once 'city.inc.php';
+require_once 'user.inc.php';
+require_once 'album.inc.php';
 connect();

@@ -36,6 +36,12 @@ if($act=="logout"){
 }elseif($act=="delCity"){
     $where="id={$id}";
     $mes=delCity($where);
+}elseif($act=="addUser"){
+    $mes=addUser();
+}elseif($act=="editUser"){
+    $mes=editUser($id);
+}elseif($act=="delUser"){
+    $mes=delUser($id);
 }
 
 ?>

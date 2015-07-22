@@ -18,12 +18,13 @@ DROP TABLE IF EXISTS `biogas_user`;
 CREATE TABLE `biogas_user`(
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
-  `capacity` decimal(10, 2) NOT NULL,
   `pId` smallint(5) unsigned NOT NULL,
   `cId` smallint(5) unsigned NOT NULL,
+  `capacity` decimal(10, 2) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `uDesc` text,
+  `pubTime` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -43,5 +44,13 @@ CREATE TABLE `biogas_city` (
   `city` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `city` (`city`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `biogas_album`;
+CREATE TABLE `biogas_album` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(10) unsigned NOT NULL,
+  `albumPath` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
