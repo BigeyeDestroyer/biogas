@@ -1,6 +1,6 @@
 <?php 
 require_once '../include.php';
-error_reporting(E_ALL^E_NOTICE); // !!! shutdown the reporting of notices !!!
+error_reporting(E_ALL&~E_NOTICE&~E_WARNING); // !!! shutdown the reporting of notices and warnings!!!
 checkLogined();
 $order=$_REQUEST['order']?$_REQUEST['order']:null;
 $orderBy=$order?"order by u.".$order:null;
@@ -79,8 +79,8 @@ $rows=fetchAll($sql);
                 <div class="bui_select">
                     <select id="" class="select" onchange="change(this.value)">
                         <option>-请选择-</option>
-                        <option value="iPrice asc" >由低到高</option>
-                        <option value="iPrice desc">由高到底</option>
+                        <option value="capacity asc" >由低到高</option>
+                        <option value="capacity desc">由高到底</option>
                     </select>
                 </div>
             </div>
