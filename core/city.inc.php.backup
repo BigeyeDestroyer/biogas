@@ -9,19 +9,9 @@
 /*
  * Add city
  * */
-require_once '../include.php';
-
 function addCity(){
     $arr=$_POST;
-    $city_get = getTemp($arr['city']);
-    $city_info['city'] = $arr['city'];
-    $city_info['pinyin'] = $city_get['pinyin'];
-    $city_info['pubDate'] = $city_get['date'];
-    $city_info['longitude'] = $city_get['longitude'];
-    $city_info['latitude'] = $city_get['latitude'];
-    $city_info['altitude'] = $city_get['altitude'];
-    if(insert("biogas_city",$city_info)){
-        createTable($city_info['pinyin']);
+    if(insert("biogas_city",$arr)){
         $mes="添加成功!<br/><a href='addCity.php'>继续添加!</a>|<a href='listCity.php'>查看列表!</a>";
     }else{
         $mes="添加失败!<br/><a href='addCity.php'>重新添加!</a>|<a href='listCity.php'>查看列表!</a>";
@@ -53,10 +43,7 @@ function editCity($where){
  * Delete cate
  * */
 function delCity($where){
-    $sql = "select pinyin from biogas_city where ".$where;
-    $cName = fetchOne($sql)['pinyin'];
     if(delete("biogas_city",$where)){
-        dropTable($cName); //同时删除城市对应的数据表
         $mes="删除成功!<br/><a href='listCity.php'>查看列表!</a>|<a href='addCity.php'>添加城市!</a>";
     }else{
         $mes="删除失败!<br/><a href='listCity.php'>重新删除!</a>";

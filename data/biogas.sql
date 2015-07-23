@@ -42,6 +42,11 @@ DROP TABLE IF EXISTS `biogas_city`;
 CREATE TABLE `biogas_city` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `city` varchar(50) NOT NULL,
+  `pinyin` varchar(50) NOT NULL,
+  `pubDate` varchar(20) NOT NULL,
+  `longitude` decimal(10, 2) NOT NULL,
+  `latitude` decimal(10, 2) NOT NULL,
+  `altitude` decimal(10, 2) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `city` (`city`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

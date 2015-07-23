@@ -5,7 +5,7 @@
  * Date: 15-5-18
  * Time: 下午10:41
  */
-
+//error_reporting(E_ALL&~E_NOTICE&~E_WARNING); // !!! shutdown the reporting of notices and warnings!!!
 /**
 Connect database
  */
@@ -76,6 +76,7 @@ function fetchOne($sql, $result_type=MYSQL_ASSOC){
  * */
 function fetchAll($sql, $result_type=MYSQL_ASSOC){
     $result=mysql_query($sql);
+    $rows = array();
     while(@$row=mysql_fetch_array($result, $result_type)){
         $rows[]=$row;
     }
@@ -97,6 +98,26 @@ function getResultNum($sql){
  */
 function getInsertId(){
     return mysql_insert_id();
+}
+
+/* 针对 city 创建相应的 temperature 数据表 */
+function createTable($cityName){
+    $sql = "CREATE TABLE `".$cityName."_tmp` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `date` varchar(20) NOT NULL,
+  `l_tmp` decimal(10, 2) NOT NULL,
+  `h_tmp` decimal(10, 2) NOT NULL,
+  PRIMARY KEY `date`(`id`),
+  UNIQUE KEY `date` (`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+    mysql_query($sql);
+}
+
+function dropTable($cityName){
+    $sql = "drop table ".$cityName."_tmp;";
+
+    mysql_query($sql);
 }
 
 

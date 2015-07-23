@@ -11,12 +11,14 @@ function addUser(){
 	$res=insert("biogas_user",$arr);
 	$uid=getInsertId();
 	if($res&&$uid){
-		foreach($uploadFiles as $uploadFile){
-			$arr1['uid']=$uid;
-			$arr1['albumPath']=$uploadFile['name'];
-			addAlbum($arr1);
-		}
-		$mes="<p>添加成功!</p><a href='addUser.php' target='mainFrame'>继续添加</a>|<a href='listUser.php' target='mainFrame'>查看用户列表</a>";
+        if($uploadFiles&&is_array($uploadFiles)){
+            foreach($uploadFiles as $uploadFile){
+                $arr1['uid']=$uid;
+                $arr1['albumPath']=$uploadFile['name'];
+                addAlbum($arr1);
+            }
+        }
+        $mes="<p>添加成功!</p><a href='addUser.php' target='mainFrame'>继续添加</a>|<a href='listUser.php' target='mainFrame'>查看用户列表</a>";
 	}else{
 		$mes="<p>添加失败!</p><a href='addUser.php' target='mainFrame'>重新添加</a>";
 	}
