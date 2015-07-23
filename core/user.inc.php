@@ -65,12 +65,22 @@ function delUser($id){
 		}
 	}
 	$where1="uid={$id}";
-	$res1=delete("biogas_album",$where1);
-	if($res&&$res1){
-		$mes="删除成功!<br/><a href='listUser.php' target='mainFrame'>查看用户列表</a>";
-	}else{
-		$mes="删除失败!<br/><a href='listUser.php' target='mainFrame'>重新删除</a>";
-	}
+    if($userImgs&&is_array($userImgs)){
+        $res1=delete("biogas_album",$where1);
+        if($res&&$res1){
+            $mes="删除成功!<br/><a href='listUser.php' target='mainFrame'>查看用户列表</a>";
+        }else{
+            $mes="删除失败!<br/><a href='listUser.php' target='mainFrame'>重新删除</a>";
+        }
+    }else{
+        if($res){
+            $mes="删除成功!<br/><a href='listUser.php' target='mainFrame'>查看用户列表</a>";
+        }else{
+            $mes="删除失败!<br/><a href='listUser.php' target='mainFrame'>重新删除</a>";
+        }
+    }
+
+
 	return $mes;
 }
 
