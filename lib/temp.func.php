@@ -28,7 +28,7 @@ function getTemp($city='beijing'){
     $fRes['longitude'] = $res['longitude'];
     $fRes['latitude'] = $res['latitude'];
     $fRes['altitude'] = $res['altitude'];
-    //return $fRes;
-    return $res;
+    return $fRes;
+    //return $res;
     //return gettype($url);
 }
