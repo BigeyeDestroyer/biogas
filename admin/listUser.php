@@ -122,7 +122,7 @@ $rows=fetchAll($sql);
                 <td align="center"><?php echo $row['province'];?></td>
                 <td align="center"><?php echo $row['phone'];?></td>
                 <td align="center"><?php echo $row['capacity'];?></td>
-                <td align="center"><?php echo date("Y-m-d H:i:s",$row['pubTime']);?></td>
+                <td align="center"><?php echo date("Y-m-d",$row['pubTime']);?></td>
                 <td align="center">
                     <input type="button" value="详情" class="btn" onclick="showDetail(<?php echo $row['id'];?>,'<?php echo $row['username'];?>')"><input type="button" value="修改" class="btn" onclick="editUser(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn"onclick="delUser(<?php echo $row['id'];?>)">
                     <div id="showDetail<?php echo $row['id'];?>" style="display:none;">
