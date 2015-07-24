@@ -20,8 +20,24 @@ function addCity(){
     $city_info['longitude'] = $city_get['longitude'];
     $city_info['latitude'] = $city_get['latitude'];
     $city_info['altitude'] = $city_get['altitude'];
+
+    $cName = $city_info['city'];
+    $pinyin = $city_info['pinyin'];
+
+    $str = "<?php"."\r\n"."require_once '../include.php';\r\n"."\$res = getItem('".$cName."');\r\n"."\$res_insert = array();\r\n"
+        ."\$res_insert['date'] = \$res['date'];\r\n"
+        ."\$res_insert['l_tmp'] = \$res['l_tmp'];\r\n"
+        ."\$res_insert['h_tmp'] = \$res['h_tmp'];\r\n"
+        ."insert(\$res['pinyin'].\"_tmp\", \$res_insert);";
+
+    $filename = '../tmp_update/'.$pinyin.'_update.php';
+
+
     if(insert("biogas_city",$city_info)){
-        createTable($city_info['pinyin']);
+        createTable($city_info['pinyin']); //(1) 创建城市温度表
+
+        file_put_contents($filename,$str); //(2) 创建温度更新脚本
+        chmod($filename, 0777);
         $mes="添加成功!<br/><a href='addCity.php'>继续添加!</a>|<a href='listCity.php'>查看列表!</a>";
     }else{
         $mes="添加失败!<br/><a href='addCity.php'>重新添加!</a>|<a href='listCity.php'>查看列表!</a>";
@@ -56,7 +72,8 @@ function delCity($where){
     $sql = "select pinyin from biogas_city where ".$where;
     $cName = fetchOne($sql)['pinyin'];
     if(delete("biogas_city",$where)){
-        dropTable($cName); //同时删除城市对应的数据表
+        dropTable($cName); //(1)同时删除城市对应的数据表
+        unlink("../tmp_update/".$cName."_update.php"); //(2)删除对应的脚本文件
         $mes="删除成功!<br/><a href='listCity.php'>查看列表!</a>|<a href='addCity.php'>添加城市!</a>";
     }else{
         $mes="删除失败!<br/><a href='listCity.php'>重新删除!</a>";

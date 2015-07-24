@@ -19,7 +19,7 @@ function checkLogined(){
     if((!isset($_SESSION['adminId']))&&(!isset($_COOKIE['adminId']))){
         alertMes("请先登录!", "login.php");
     }
-    if($_SESSION['adminId']==""&&$_COOKIE['adminId']==""){
+    if(@$_SESSION['adminId']==""&&$_COOKIE['adminId']==""){
         alertMes("请先登录!", "login.php");
     }
 }
