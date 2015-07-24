@@ -10,3 +10,4 @@ $arr['pubDate']=time();
 //print_r($arr['pubDate']);
 echo date("y-m-d", $arr['pubDate']);
 echo gettype(date("y-m-d", $arr['pubDate']));
+phpinfo();

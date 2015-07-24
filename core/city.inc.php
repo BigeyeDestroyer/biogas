@@ -24,7 +24,14 @@ function addCity(){
     $cName = $city_info['city'];
     $pinyin = $city_info['pinyin'];
 
-    $str = "<?php"."\r\n"."require_once '../include.php';\r\n"."\$res = getItem('".$cName."');\r\n"."\$res_insert = array();\r\n"
+    $str = "<?php"."\r\n"."require_once './mysql.func.php';\r\n"
+        ."require_once './temp.func.php';\r\n"
+        ."\r\n"
+        ."mysql_connect(\"localhost:/tmp/mysql.sock\",\"root\",\"\");\r\n"
+        ."mysql_set_charset(\"utf8\");\r\n"
+        ."mysql_select_db(\"biogas\");\r\n"
+        ."\r\n"
+        ."\$res = getItem('".$cName."');\r\n"."\$res_insert = array();\r\n"
         ."\$res_insert['date'] = \$res['date'];\r\n"
         ."\$res_insert['l_tmp'] = \$res['l_tmp'];\r\n"
         ."\$res_insert['h_tmp'] = \$res['h_tmp'];\r\n"
