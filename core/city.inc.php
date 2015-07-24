@@ -24,8 +24,8 @@ function addCity(){
     $cName = $city_info['city'];
     $pinyin = $city_info['pinyin'];
 
-    $str = "<?php"."\r\n"."require_once './mysql.func.php';\r\n"
-        ."require_once './temp.func.php';\r\n"
+    $str = "<?php"."\r\n"."require_once '../lib/mysql.func.php';\r\n"
+        ."require_once '../lib/temp.func.php';\r\n"
         ."\r\n"
         ."mysql_connect(\"localhost:/tmp/mysql.sock\",\"root\",\"\");\r\n"
         ."mysql_set_charset(\"utf8\");\r\n"
