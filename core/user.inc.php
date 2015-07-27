@@ -89,7 +89,7 @@ function delUser($id){
 }
 
 /*!!! delUser() 函数没有问题 !!!*/
-function queryTry($id){
+function queryTemp($id){
     $cId = getcIdById($id);
     $pinyin = getPinyinById($cId)['pinyin'];
     $capacity = getCapById($id);
@@ -148,87 +148,6 @@ function queryTry($id){
 //    print_r($gas_total/count($gas_res));
 }
 
-function queryUser($id){
-    header("Content-Type:image/png");
-    $width = 500;   //定义画布宽度
-    $height= 500;   //定义画布高度
-    $unit  = 80;   //定义刻度间隔
-    $right = 20;   //定义坐标系距画布右侧距离
-    $left  = 20;   //定义坐标系距画布左侧距离
-    $top   = 20;   //定义坐标系距画布上侧距离
-    $buttom= 20;
-
-    $arr_res = queryTry($id);
-    $gas_res = $arr_res[0];
-    $d_res = $arr_res[1];
-    $gas_total = $arr_res[2];
-
-    $x = array();   //定义x坐标空数组
-    $y = array();   //定义y坐标空数组
-    $data = $gas_res;
-    $name = $d_res;
-
-    $max=0;
-    for ($i = 0;$i<count($data);$i++){  //获取$data中最大值
-        if($data[$i]>$max){
-            $max = $data[$i];
-        }
-    }
-
-    $image = imagecreatetruecolor($width, $height);       //---------------------//
-    $white = imagecolorallocate($image, 255, 255, 255);   //定义真彩画布及颜色值//
-    $black = imagecolorallocate($image, 10, 10, 10);
-    $blue  = imagecolorallocate($image, 0, 0, 255);   //---------------------//
-    imagefill($image, 0, 0, $white);
-
-    imageline($image, $left, $height-$buttom, $width-$right, $height-$buttom, $black);      //画纵坐标
-    imageline($image, $left, $buttom, $left, $height-$buttom, $black);
-
-    imageline($image,$width-$right, $height-$buttom, ($width-$right)-8,$height-$buttom-3,  $black);
-    imageline($image,$width-$right, $height-$buttom, ($width-$right)-8,$height-$buttom+3,  $black);
-    imageline($image, $left, $top/4+16, $left+3, $top/4+24, $black);
-    imageline($image, $left, $top/4+16, $left-3, $top/4+24, $black);
-
-    for ($i = 0;$i < count($data);$i++){
-        $x[$i] = $left+$i*$unit;
-        $y[$i] = $top+round($height-$top-$buttom)*(1-$data[$i]/$max);
-    }
-
-    //画出横坐标
-    for ($i = 0;$i<count($data);$i++){
-        imageline($image, $left+$i*$unit, $height-$buttom, $left+$i*$unit, $height-$buttom-8, $black);
-        imagestring($image, 2, $left+$i*$unit, $height-$buttom, $name[$i], $black);
-    }
-
-    //画出纵坐标
-    for($i = 0;$i<count($data);$i++){
-        imageline($image, $left, $top+($height-$top-$buttom)*$i/count($data), $left+5, $top+($height-$top-$buttom)*$i/count($data), $black);
-        imagestring($image, 2, $left/4, $top+($height-$top-$buttom)*$i/count($data), $max*(count($data)-$i)/(count($data)), $black);
-    }
-
-    //绘制数据折线图
-    for ($i=0;$i<count($data);$i++){
-        if ($i+1!=count($data)){
-            imageline($image, $x[$i], $y[$i], $x[$i+1], $y[$i+1], $blue);
-            imagefilledarc($image, $x[$i], $y[$i], 5, 5, 0, 360, $blue, IMG_ARC_PIE);
-        }
-    }
-
-    //绘制数据标签实心圆点
-    imagefilledarc($image, $x[count($data)-1], $y[count($data)-1], 5, 5, 0, 360, $blue, IMG_ARC_PIE);
-
-    for ($i=0;$i<count($data);$i++){
-    //绘制折点标签值
-        imagestring($image, 3, $x[$i]+5, $y[$i]+5, $data[$i], $black);
-    }
-    imagestring($image,3,$x[4]+10,$y[4]+40,"total:".$gas_total,$black);
-    imagestring($image,3,$x[4]+10,$y[4]+60,"avg:".$gas_total/count($gas_res),$black);
-
-    imagepng($image);
-
-    imagedestroy($image);
-}
-
 /*function queryUser($id){
     echo $id;
 }*/
@@ -277,6 +196,12 @@ function getCapById($id){
     $sql="select capacity from biogas_user where id={$id}";
     $row=fetchOne($sql);
     return $row['capacity'];
+}
+
+function getNameById($id){
+    $sql="select username from biogas_user where id={$id}";
+    $row=fetchOne($sql);
+    return $row['username'];
 }
 
 /**

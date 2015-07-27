@@ -15,7 +15,7 @@ a:hover{text-decoration: underline;}
 
 /*头部*/
 .head{height: 60px; background-color: #2a2c2e; padding: 0 10px;}
-.logo{width: 100px; height: 100%; background: url(../images/logo_index_biogas.png) left top no-repeat;}
+.logo{width: 100px; height: 100%; background: url(../images/logo_index.png) left top no-repeat;}
 .head_text{height: 100%; font:22px/60px "微软雅黑"; color: #FFF; }
 
 /*用户位置*/
@@ -53,10 +53,9 @@ a:hover{text-decoration: underline;}
 .ml30{margin-left: 30px; display: inline;}
 /*表格*/
 .table{border-collapse: collapse; width: 100%; font-size: 14px;}
-/*.table{border-collapse: collapse; font-size: 14px;}*/
 .table th{background-color: #E8E8E8;}
 .table th,
-.table td{border: solid 1px #ccc; padding: 1px;}
+.table td{border: solid 1px #ccc; padding: 8px;}
 .label,.check{vertical-align: middle;}
 .check{margin-right: 4px;}
 .btn{padding: 4px 16px; background-color: #E8E8E8; margin: 0 10px;font-family: "微软雅黑"; font-size: 14px; }

@@ -118,7 +118,7 @@ $rows=fetchAll($sql);
                 <td align="center"><?php echo $row['username']; ?></td>
                 <td align="center"><?php echo date("Y-m-d",$row['pubTime']);?></td>
                 <td align="center">
-                    <form action="doAdminAction.php?act=queryUser&id=<?php $id=$row['id'];echo $id;?>" method="post">
+                    <form action="temp_char.php?id=<?php $id=$row['id'];echo $id?>" method="post">
                         <table border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
                             <td><input type="text" name="bYear" placeholder="起始年"/></td>
                             <td><input type="text" name="bMonth" placeholder="起始月"/></td>
@@ -126,7 +126,7 @@ $rows=fetchAll($sql);
                             <td><input type="text" name="eYear" placeholder="终止年"/></td>
                             <td><input type="text" name="eMonth" placeholder="终止月"/></td>
                             <td><input type="text" name="eDay" placeholder="终止日"/></td>
-                            <td colspan="2"><input type="submit" value="查询"/></td>
+                            <td colspan="2"><input type="submit" value="查询" /></td>
                         </table>
                     </form>
                 </td>
