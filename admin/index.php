@@ -67,6 +67,12 @@ checkLogined();
                         </dl>
                     </li>
                     <li>
+                        <h3><span onclick="show('menu4','change4')" id="change4">+</span>用户产量查询</h3>
+                        <dl id="menu4" style="display:none;">
+                            <dd><a href="listOut.php" target="mainFrame">用户列表</a></dd>
+                        </dl>
+                    </li>
+                    <li>
                         <h3><span onclick="show('menu5','change5')" id="change5">+</span>管理员管理</h3>
                         <dl id="menu5" style="display:none;">
                         	<dd><a href="addAdmin.php" target="mainFrame">添加管理员</a></dd>

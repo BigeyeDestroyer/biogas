@@ -59,6 +59,11 @@ function getCityById($id){
     return fetchOne($sql);
 }
 
+function getPinyinById($id){
+    $sql="select pinyin from biogas_city where id={$id}";
+    return fetchOne($sql);
+}
+
 /*
  * Edit cate
  * */

@@ -11,3 +11,6 @@ $arr['pubDate']=time();
 echo date("y-m-d", $arr['pubDate']);
 echo gettype(date("y-m-d", $arr['pubDate']));
 phpinfo();
+
+curl  --get --include  'http://apis.baidu.com/apistore/weatherservice/weather?citypinyin=changsha'  -H 'apikey:9e036045da7a654fcc2cd0fca8c8a7ca';
+
