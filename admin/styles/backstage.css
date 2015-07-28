@@ -15,7 +15,7 @@ a:hover{text-decoration: underline;}
 
 /*头部*/
 .head{height: 60px; background-color: #2a2c2e; padding: 0 10px;}
-.logo{width: 100px; height: 100%; background: url(../images/logo_index.png) left top no-repeat;}
+.logo{width: 100px; height: 100%; background: url(../images/logo_index_biogas.png) left top no-repeat;}
 .head_text{height: 100%; font:22px/60px "微软雅黑"; color: #FFF; }
 
 /*用户位置*/

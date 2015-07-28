@@ -12,8 +12,8 @@ checkLogined();
 
 <body>
     <div class="head">
-            <div class="logo fl"><a href="#"></a></div>
-            <h3 class="head_text fr">绿野沼气池管理系统</h3>
+            <div class="logo fl"><a href="./images/logo_index_biogas.png"></a></div>
+            <h3 class="head_text fr">绿野沼气技术管理系统</h3>
     </div>
     <div class="operation_user clearfix">
        <!--   <div class="link fl"><a href="#">慕课</a><span>&gt;&gt;</span><a href="#">商品管理</a><span>&gt;&gt;</span>商品修改</div>-->
@@ -77,13 +77,6 @@ checkLogined();
                         <dl id="menu5" style="display:none;">
                         	<dd><a href="addAdmin.php" target="mainFrame">添加管理员</a></dd>
                             <dd><a href="listAdmin.php" target="mainFrame">管理员列表</a></dd>
-                        </dl>
-                    </li>
-                    
-                         <li>
-                        <h3><span onclick="show('menu6','change6')" id="change6">+</span>商品图片管理</h3>
-                        <dl id="menu6" style="display:none;">
-                            <dd><a href="listProImages.php" target="mainFrame">商品图片列表</a></dd>
                         </dl>
                     </li>
                 </ul>

@@ -127,7 +127,7 @@ function queryTemp($id){
         $l_res[$i]=$l_tmp[$i]['l_tmp'];
         $h_res[$i]=$h_tmp[$i]['h_tmp'];
         $m_res[$i] = ($h_res[$i] + $l_res[$i]) / 2;
-        $gas_res[$i] = 0.01 * $m_res[$i] * $capacity - 0.02;
+        $gas_res[$i] = (0.01 * $m_res[$i] - 0.02) * $capacity;
         $gas_total = $gas_total + $gas_res[$i];
 
         // from 2015-7-31 to 7/31
