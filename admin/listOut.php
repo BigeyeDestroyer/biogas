@@ -25,6 +25,7 @@ $rows=fetchAll($sql);
     <title>-.-</title>
     <link rel="stylesheet" href="styles/backstage.css">
     <link rel="stylesheet" href="scripts/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+    <link href="../jquery/jquery-ui.css" rel="stylesheet">
     <script src="scripts/jquery-ui/js/jquery-1.10.2.js"></script>
     <script src="scripts/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
     <script src="scripts/jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -66,6 +67,49 @@ $rows=fetchAll($sql);
             window.location="queryUser.php";
         }
     </script>
+    <style>
+        body{
+            font: 62.5% "Trebuchet MS", sans-serif;
+            margin: 50px;
+        }
+        .demoHeaders {
+            margin-top: 2em;
+        }
+        #dialog-link {
+            padding: .4em 1em .4em 20px;
+            text-decoration: none;
+            position: relative;
+        }
+        #dialog-link span.ui-icon {
+            margin: 0 5px 0 0;
+            position: absolute;
+            left: .2em;
+            top: 50%;
+            margin-top: -8px;
+        }
+        #icons {
+            margin: 0;
+            padding: 0;
+        }
+        #icons li {
+            margin: 2px;
+            position: relative;
+            padding: 4px 0;
+            cursor: pointer;
+            float: left;
+            list-style: none;
+        }
+        #icons span.ui-icon {
+            float: left;
+            margin: 0 4px;
+        }
+        .fakewindowcontain .ui-widget-overlay {
+            position: absolute;
+        }
+        select {
+            width: 200px;
+        }
+    </style>
 </head>
 
 <body>
@@ -106,6 +150,7 @@ $rows=fetchAll($sql);
         <tr>
             <th width="5%">编号</th>
             <th width="10%">用户姓名</th>
+            <th width="10%">池容(m^3)</th>
             <th width="10%">建立时间</th>
             <th width="20%">起止查询时间</th>
         </tr>
@@ -116,16 +161,13 @@ $rows=fetchAll($sql);
                 <!--这里的id和for里面的c1 需要循环出来-->
                 <td align="center"><input type="checkbox" id="c<?php echo $row['id'];?>" class="check" value=<?php echo $row['id'];?>><label for="c1" class="label"><?php echo $row['id'];?></label></td>
                 <td align="center"><?php echo $row['username']; ?></td>
+                <td align="center"><?php echo $row['capacity']; ?></td>
                 <td align="center"><?php echo date("Y-m-d",$row['pubTime']);?></td>
                 <td align="center">
                     <form action="temp_char.php?id=<?php $id=$row['id'];echo $id?>" method="post">
-                        <table border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
-                            <td><input type="text" name="bYear" placeholder="起始年"/></td>
-                            <td><input type="text" name="bMonth" placeholder="起始月"/></td>
-                            <td><input type="text" name="bDay" placeholder="起始日"/></td>
-                            <td><input type="text" name="eYear" placeholder="终止年"/></td>
-                            <td><input type="text" name="eMonth" placeholder="终止月"/></td>
-                            <td><input type="text" name="eDay" placeholder="终止日"/></td>
+                        <table border="1" cellpadding="5" cellspacing="0">
+                            <td><input type="text" id="datepicker1", placeholder="起始查询时间" name="bTime"/></td>
+                            <td><input type="text" id="datepicker2", placeholder="终止查询时间" name="eTime"/></td>
                             <td colspan="2"><input type="submit" value="查询" /></td>
                         </table>
                     </form>
@@ -140,6 +182,15 @@ $rows=fetchAll($sql);
         </tbody>
     </table>
 </div>
-
+<script src="../jquery/external/jquery/jquery.js"></script>
+<script src="../jquery/jquery-ui.js"></script>
+<script>
+    $( "#datepicker1" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker2" ).datepicker({
+        inline: true
+    });
+</script>
 </body>
 </html>

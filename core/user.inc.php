@@ -96,13 +96,13 @@ function queryTemp($id){
 
     $arr = $_POST;
 
-    $bYear = $arr['bYear'];
-    $lb = strlen($bYear);
-    $bTime = substr($bYear,$lb-2,2)."-".$arr['bMonth']."-".$arr['bDay']; // string
+    $bTemp = $arr['bTime'];
+    $lb = strlen($bTemp);
+    $bTime = substr($bTemp,$lb-2,2)."-".substr($bTemp,0,2)."-".substr($bTemp,3,2); // string
 
-    $eYear = $arr['eYear'];
-    $le = strlen($eYear);
-    $eTime = substr($eYear,$le-2,2)."-".$arr['eMonth']."-".$arr['eDay']; // string
+    $eTemp = $arr['eTime'];
+    $le = strlen($eTemp);
+    $eTime = substr($eTemp,$le-2,2)."-".substr($eTemp,0,2)."-".substr($eTemp,3,2); // string
 
     $bsql = "select id from ".$pinyin."_tmp where date="."\"".$bTime."\"";
     $esql = "select id from ".$pinyin."_tmp where date="."\"".$eTime."\"";
