@@ -20,6 +20,8 @@ function addCity(){
     $city_info['longitude'] = $city_get['longitude'];
     $city_info['latitude'] = $city_get['latitude'];
     $city_info['altitude'] = $city_get['altitude'];
+    $city_info['pId'] = $arr['pId'];
+    $city_info['totalCap'] = 0;
 
     $cName = $city_info['city'];
     $pinyin = $city_info['pinyin'];
@@ -64,6 +66,12 @@ function getPinyinById($id){
     return fetchOne($sql);
 }
 
+// 得到某个城市当前总池容
+function getCityCapById($id){
+    $sql="select totalCap from biogas_city where id={$id}";
+    $res = fetchOne($sql);
+    return $res['totalCap'];
+}
 /*
  * Edit cate
  * */

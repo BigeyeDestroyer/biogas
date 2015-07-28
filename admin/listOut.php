@@ -150,6 +150,7 @@ $rows=fetchAll($sql);
         <tr>
             <th width="5%">编号</th>
             <th width="10%">用户姓名</th>
+            <th width="10">用户地区</th>
             <th width="10%">池容(m^3)</th>
             <th width="10%">建立时间</th>
             <th width="20%">起止查询时间</th>
@@ -161,6 +162,7 @@ $rows=fetchAll($sql);
                 <!--这里的id和for里面的c1 需要循环出来-->
                 <td align="center"><input type="checkbox" id="c<?php echo $row['id'];?>" class="check" value=<?php echo $row['id'];?>><label for="c1" class="label"><?php echo $row['id'];?></label></td>
                 <td align="center"><?php echo $row['username']; ?></td>
+                <td align="center"><?php echo getAreaById($row['id']); ?></td>
                 <td align="center"><?php echo $row['capacity']; ?></td>
                 <td align="center"><?php echo date("Y-m-d",$row['pubTime']);?></td>
                 <td align="center">

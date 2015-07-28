@@ -9,7 +9,7 @@ $where=$keywords?"where u.username like '%{$keywords}%'":null;
 //得到数据库中所有用户
 $sql="select u.id,u.username,u.pId,u.cId,u.capacity,u.address,u.phone,u.uDesc,u.pubTime,p.province, c.city from biogas_user as u join biogas_prov p on u.pId=p.id join biogas_city c on u.cId=c.id {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=4;
+$pageSize=8;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;

@@ -10,6 +10,11 @@ function addUser(){
 	$arr['pubTime']=time();
 	$path="../uploads";
 	$uploadFiles=uploadFile($path);
+
+    $totalCap = $arr['capacity']+getCityCapById($arr['cId']);
+    $sql = "update biogas_city set totalCap=".$totalCap." where id=".$arr['cId'];
+    mysql_query($sql); //更新城市的总池容
+
 	$res=insert("biogas_user",$arr);
 	$uid=getInsertId();
 	if($res&&$uid){
@@ -59,6 +64,11 @@ function editUser($id){
 
 function delUser($id){
 	$where="id=$id";
+
+    $totalCap = getCityCapById(getcIdById($id))-getCapById($id);
+    $sql = "update biogas_city set totalCap=".$totalCap." where id=".getcIdById($id);
+    mysql_query($sql); //更新城市的总池容
+
 	$res=delete("biogas_user",$where);
 	$userImgs=getAllImgByUserId($id);
 	if($userImgs&&is_array($userImgs)){
@@ -190,6 +200,15 @@ function getcIdById($id){
     $sql="select cId from biogas_user where id={$id}";
     $row=fetchOne($sql);
     return $row['cId'];
+}
+
+function getAreaById($id){
+    $csql="select cId from biogas_user where id={$id}";
+    $cId = fetchOne($csql)['cId'];
+    $psql="select pId from biogas_user where id={$id}";
+    $pId = fetchOne($psql)['pId'];
+    $res = getProvById($pId)['province']."省".getCityById($cId)['city']."市";
+    return $res;
 }
 
 function getCapById($id){
