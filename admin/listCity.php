@@ -39,7 +39,7 @@ if(!$rows){
         <thead>
         <tr>
             <th width="15%">编号</th>
-            <th width="25%">省份名称</th>
+            <th width="25%">城市名称</th>
             <th>操作</th>
         </tr>
         </thead>
