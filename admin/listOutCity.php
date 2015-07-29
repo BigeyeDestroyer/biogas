@@ -9,7 +9,7 @@ $where=$keywords?"where c.city like '%{$keywords}%'":null;
 //得到数据库中所有用户
 $sql="select c.id,c.city,c.longitude,c.latitude,c.totalCap,c.pubDate from biogas_city as c {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=6;
+$pageSize=5;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;
@@ -95,6 +95,16 @@ $rows=fetchAll($sql);
 <div class="details">
     <div class="details_operation clearfix">
         <div class="fr">
+            <div class="text">
+                <span>全部城市产气量</span>
+                <form action="temp_char_all_city.php" method="post">
+                    <table border="1" cellpadding="5" cellspacing="0">
+                        <td><input type="text" id="datepicker11", placeholder="起始查询时间" name="bTime"/></td>
+                        <td><input type="text" id="datepicker12", placeholder="终止查询时间" name="eTime"/></td>
+                        <td colspan="2"><input type="submit" value="查询" /></td>
+                    </table>
+                </form>
+            </div>
             <div class="text">
                 <span>城市总池容：</span>
                 <div class="bui_select">
@@ -184,6 +194,12 @@ $rows=fetchAll($sql);
         inline: true
     });
     $( "#datepicker10" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker11" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker12" ).datepicker({
         inline: true
     });
 </script>

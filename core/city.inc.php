@@ -160,6 +160,48 @@ function queryTempCity($id){
 //    print_r($gas_total/count($gas_res));
 }
 
+/* 获取某个城市一段时间内沼气总量 */
+function queryTotalGas($id){
+    $pinyin = getPinyinById($id)['pinyin'];
+    $capacity = getCityCapById($id);
+
+    $arr = $_POST;
+
+    $bTemp = $arr['bTime'];
+    $lb = strlen($bTemp);
+    $bTime = substr($bTemp,$lb-2,2)."-".substr($bTemp,0,2)."-".substr($bTemp,3,2); // string
+
+    $eTemp = $arr['eTime'];
+    $le = strlen($eTemp);
+    $eTime = substr($eTemp,$le-2,2)."-".substr($eTemp,0,2)."-".substr($eTemp,3,2); // string
+
+    $bsql = "select id from ".$pinyin."_tmp where date="."\"".$bTime."\"";
+    $esql = "select id from ".$pinyin."_tmp where date="."\"".$eTime."\"";
+
+    $bId = fetchOne($bsql)['id'];
+    $eId = fetchOne($esql)['id']; // 得到两个日期所对应的id
+
+    $l_sql = "select l_tmp from ".$pinyin."_tmp where id>=".$bId." and id<=".$eId;
+    $h_sql = "select h_tmp from ".$pinyin."_tmp where id>=".$bId." and id<=".$eId;
+
+    $l_tmp = fetchAll($l_sql);
+    $l_res = array(); // low_temperature
+    $h_tmp = fetchAll($h_sql);
+    $h_res = array(); // high_temperature
+    $m_res = array(); // mid_temperature
+    $gas_res = array(); // 产气量
+    $gas_total = 0;
+    for($i=0;$i<count($l_tmp);$i++){
+        $l_res[$i]=$l_tmp[$i]['l_tmp'];
+        $h_res[$i]=$h_tmp[$i]['h_tmp'];
+        $m_res[$i] = ($h_res[$i] + $l_res[$i]) / 2;
+        $gas_res[$i] = (0.01 * $m_res[$i] - 0.02) * $capacity;
+        $gas_total = $gas_total + $gas_res[$i];
+
+    }
+    return $gas_total;
+}
+
 /**
  * 得到所有城市
  * @return array
