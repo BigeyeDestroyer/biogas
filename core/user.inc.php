@@ -145,6 +145,9 @@ function queryTemp($id){
         $h_res[$i]=$h_tmp[$i]['h_tmp'];
         $m_res[$i] = ($h_res[$i] + $l_res[$i]) / 2;
         $gas_res[$i] = (0.01 * $m_res[$i] - 0.02) * $capacity;
+        if($gas_res[$i]<0){ // 即不产生沼气的情况
+            $gas_res[$i] = 0;
+        }
         $gas_total = $gas_total + $gas_res[$i];
 
         // from 2015-7-31 to 7/31
@@ -153,9 +156,10 @@ function queryTemp($id){
         $d_res[$i][2] = "/";
     }
     $res = array();
-    $res[0] = $gas_res;
-    $res[1] = $d_res;
-    $res[2] = $gas_total;
+    $res[0] = $gas_res; // 沼气产量数组
+    $res[1] = $d_res; // 日期数组
+    $res[2] = $gas_total; // 沼气总量
+    $res[3] = $m_res; // 平均温度数组
     return $res;
 //    print_r($res);
 //    print_r($m_res);

@@ -30,30 +30,6 @@ $rows=fetchAll($sql);
     <script src="scripts/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
     <script src="scripts/jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript">
-        function showDetail(id,t){
-            $("#showDetail"+id).dialog({
-                height:"auto",
-                width: "auto",
-                position: {my: "center", at: "center",  collision:"fit"},
-                modal:false,//是否模式对话框
-                draggable:true,//是否允许拖拽
-                resizable:true,//是否允许拖动
-                title:"用户姓名："+t,//对话框标题
-                show:"slide",
-                hide:"explode"
-            });
-        }
-        function addUser(){
-            window.location='addUser.php';
-        }
-        function editUser(id){
-            window.location='editUser.php?id='+id;
-        }
-        function delUser(id){
-            if(window.confirm("您确认要删除吗？")){
-                window.location="doAdminAction.php?act=delUser&id="+id;
-            }
-        }
         function search(){
             if(event.keyCode==13){
                 var val=document.getElementById("search").value;
@@ -62,9 +38,6 @@ $rows=fetchAll($sql);
         }
         function change(val){
             window.location="listOut.php?order="+val;
-        }
-        function query(){
-            window.location="queryUser.php";
         }
     </script>
     <style>

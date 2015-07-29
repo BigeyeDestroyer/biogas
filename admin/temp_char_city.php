@@ -13,8 +13,11 @@ $city= getCityById($id)['city'];
 $gas_res = $arr_res[0];
 $d_res = $arr_res[1];
 $gas_total = $arr_res[2];
+$mid_res = $arr_res[3];
+
 $gas_avg = $gas_total/count($d_res);
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -29,33 +32,77 @@ $gas_avg = $gas_total/count($d_res);
         $(function () {
             $('#container').highcharts({
                 chart: {
-                    type: 'line'
+                    zoomType: 'xy'
                 },
                 title: {
-                    text: <?php echo json_encode($city."沼气产量曲线"); ?>
+                    text: '沼气产量曲线 vs 平均温度曲线'
                 },
-                xAxis: {
+                subtitle: {
+                    text: <?php echo json_encode($city."市"); ?>
+                },
+                xAxis: [{
                     categories: <?php echo json_encode($d_res); ?>
-                },
-                yAxis: {
+                }],
+                yAxis: [{ // Primary yAxis
+                    labels: {
+                        format: '{value}°C',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
                     title: {
-                        text: '沼气产量 (m^3)'
+                        text: '平均温度',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
                     }
+                }, { // Secondary yAxis
+                    title: {
+                        text: '沼气产量',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        }
+                    },
+                    labels: {
+                        format: '{value} 立方米',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        }
+                    },
+                    opposite: true
+                }],
+                tooltip: {
+                    shared: true
                 },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: false
-                    }
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    x: 60,
+                    verticalAlign: 'top',
+                    y: 60,
+                    floating: true,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
                 },
                 series: [{
-                    name: <?php echo json_encode($city); ?>,
-                    data: <?php echo json_encode($gas_res); ?>
+                    name: '沼气产量',
+                    type: 'column',
+                    yAxis: 1,
+                    data: <?php echo json_encode($gas_res); ?>,
+                    tooltip: {
+                        valueSuffix: ' 立方米'
+                    }
+
+                }, {
+                    name: '平均温度',
+                    type: 'spline',
+                    data:  <?php echo json_encode($mid_res); ?>,
+                    tooltip: {
+                        valueSuffix: '°C'
+                    }
                 }]
             });
         });
+
 
     </script>
 </head>
@@ -63,7 +110,7 @@ $gas_avg = $gas_total/count($d_res);
 <script src="../js/highcharts.js"></script>
 <script src="../js/modules/exporting.js"></script>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="..."></div>
 <div>
     <table align="center">
         <td><?php echo "沼气总产量: ".round($gas_total,2)."立方米"?></td>

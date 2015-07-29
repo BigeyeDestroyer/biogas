@@ -140,6 +140,9 @@ function queryTempCity($id){
         $h_res[$i]=$h_tmp[$i]['h_tmp'];
         $m_res[$i] = ($h_res[$i] + $l_res[$i]) / 2;
         $gas_res[$i] = (0.01 * $m_res[$i] - 0.02) * $capacity;
+        if($gas_res[$i]<0){ // 即不产生沼气的情况
+            $gas_res[$i] = 0;
+        }
         $gas_total = $gas_total + $gas_res[$i];
 
         // from 2015-7-31 to 7/31
@@ -151,6 +154,7 @@ function queryTempCity($id){
     $res[0] = $gas_res;
     $res[1] = $d_res;
     $res[2] = $gas_total;
+    $res[3] = $m_res;
     return $res;
 //    print_r($res);
 //    print_r($m_res);
@@ -196,6 +200,9 @@ function queryTotalGas($id){
         $h_res[$i]=$h_tmp[$i]['h_tmp'];
         $m_res[$i] = ($h_res[$i] + $l_res[$i]) / 2;
         $gas_res[$i] = (0.01 * $m_res[$i] - 0.02) * $capacity;
+        if($gas_res[$i]<0){ // 即不产生沼气的情况
+            $gas_res[$i] = 0;
+        }
         $gas_total = $gas_total + $gas_res[$i];
 
     }
