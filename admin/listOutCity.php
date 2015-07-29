@@ -7,7 +7,7 @@ $orderBy=$order?"order by c.".$order:null;
 $keywords=$_REQUEST['keywords']?$_REQUEST['keywords']:null;
 $where=$keywords?"where c.city like '%{$keywords}%'":null;
 //得到数据库中所有用户
-$sql="select id,city,longitude,latitude,totalCap,pubDate from biogas_city {$where}";
+$sql="select c.id,c.city,c.longitude,c.latitude,c.totalCap,c.pubDate from biogas_city as c {$where}";
 $totalRows=getResultNum($sql);
 $pageSize=6;
 $totalPage=ceil($totalRows/$pageSize);
@@ -16,7 +16,7 @@ if($page<1||$page==null||!is_numeric($page))$page=1;
 if($page>$totalPage)$page=$totalPage;
 $offset=($page-1)*$pageSize;
 //$sql="select u.id,u.username,u.pId,u.cId,u.capacity,u.address,u.phone,u.uDesc,u.pubTime,p.province, c.city from biogas_user as u join biogas_prov p on u.pId=p.id join biogas_city c on u.cId=c.id {$where} {$orderBy} limit {$offset},{$pageSize}";
-$sql="select id,city,longitude,latitude,totalCap,pubDate from biogas_city {$where} {$orderBy} limit {$offset},{$pageSize}";
+$sql="select c.id,c.city,c.longitude,c.latitude,c.totalCap,c.pubDate from biogas_city as c {$where} {$orderBy} limit {$offset},{$pageSize}";
 $rows=fetchAll($sql);
 ?>
 <!doctype html>
@@ -38,7 +38,7 @@ $rows=fetchAll($sql);
             }
         }
         function change(val){
-            window.location="listOut.php?order="+val;
+            window.location="listOutCity.php?order="+val;
         }
         function query(){
             window.location="queryUser.php";
