@@ -43,6 +43,11 @@ function editUser($id){
 	$path="../uploads";
 	$uploadFiles=uploadFile($path);
 	$where="id={$id}";
+
+    $totalCap = getCityCapById(getcIdById($id))-getCapById($id)+$arr['capacity']; //减去旧的，加上新的
+    $sql = "update biogas_city set totalCap=".$totalCap." where id=".getcIdById($id);
+    mysql_query($sql); //更新城市的总池容
+
 	$res=update("biogas_user",$arr,$where);
 	$uid=$id;
 	if($res&&$uid){

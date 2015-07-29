@@ -9,7 +9,7 @@ $where=$keywords?"where u.username like '%{$keywords}%'":null;
 //得到数据库中所有用户
 $sql="select u.id,u.username,u.pId,u.cId,u.capacity,u.address,u.phone,u.uDesc,u.pubTime,p.province, c.city from biogas_user as u join biogas_prov p on u.pId=p.id join biogas_city c on u.cId=c.id {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=4;
+$pageSize=6;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;
@@ -168,8 +168,8 @@ $rows=fetchAll($sql);
                 <td align="center">
                     <form action="temp_char.php?id=<?php $id=$row['id'];echo $id?>" method="post">
                         <table border="1" cellpadding="5" cellspacing="0">
-                            <td><input type="text" id="datepicker1", placeholder="起始查询时间" name="bTime"/></td>
-                            <td><input type="text" id="datepicker2", placeholder="终止查询时间" name="eTime"/></td>
+                            <td><input type="text" id=<?php echo "\""."datepicker".(2*$i-1)."\"";?>, placeholder="起始查询时间" name="bTime"/></td>
+                            <td><input type="text" id=<?php echo "\""."datepicker".(2*$i)."\"";?>, placeholder="终止查询时间" name="eTime"/></td>
                             <td colspan="2"><input type="submit" value="查询" /></td>
                         </table>
                     </form>
@@ -191,6 +191,30 @@ $rows=fetchAll($sql);
         inline: true
     });
     $( "#datepicker2" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker3" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker4" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker5" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker6" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker7" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker8" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker9" ).datepicker({
+        inline: true
+    });
+    $( "#datepicker10" ).datepicker({
         inline: true
     });
 </script>

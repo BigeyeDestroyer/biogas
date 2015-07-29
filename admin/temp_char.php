@@ -66,9 +66,9 @@ $gas_avg = $gas_total/count($d_res);
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div>
     <table align="center">
-        <td><?php echo "沼气总产量: ".$gas_total?></td>
+        <td><?php echo "沼气总产量: ".round($gas_total,2)?></td>
         <td>&nbsp;&nbsp;</td>
-        <td><?php echo "沼气日均产量: ".$gas_avg?></td>
+        <td><?php echo "沼气日均产量: ".round($gas_avg,2)?></td>
     </table>
 </div>
 </body>
