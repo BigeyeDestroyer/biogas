@@ -73,8 +73,14 @@ checkLogined();
                         </dl>
                     </li>
                     <li>
-                        <h3><span onclick="show('menu5','change5')" id="change5">+</span>管理员管理</h3>
+                        <h3><span onclick="show('menu5','change5')" id="change5">+</span>城市产量查询</h3>
                         <dl id="menu5" style="display:none;">
+                            <dd><a href="listOutCity.php" target="mainFrame">城市列表</a></dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <h3><span onclick="show('menu6','change6')" id="change6">+</span>管理员管理</h3>
+                        <dl id="menu6" style="display:none;">
                         	<dd><a href="addAdmin.php" target="mainFrame">添加管理员</a></dd>
                             <dd><a href="listAdmin.php" target="mainFrame">管理员列表</a></dd>
                         </dl>

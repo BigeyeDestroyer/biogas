@@ -104,6 +104,8 @@ function delUser($id){
 }
 
 /*!!! delUser() 函数没有问题 !!!*/
+
+/* 得到某个用户在一段时间内沼气的产量 */
 function queryTemp($id){
     $cId = getcIdById($id);
     $pinyin = getPinyinById($cId)['pinyin'];

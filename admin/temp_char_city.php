@@ -7,8 +7,8 @@
  */
 require_once "../include.php";
 $id=$_REQUEST['id'];
-$arr_res = queryTemp($id);
-$username= getNameById($id);
+$arr_res = queryTempCity($id);
+$city= getCityById($id)['city'];
 
 $gas_res = $arr_res[0];
 $d_res = $arr_res[1];
@@ -32,7 +32,7 @@ $gas_avg = $gas_total/count($d_res);
                     type: 'line'
                 },
                 title: {
-                    text: <?php echo json_encode($username."沼气产量曲线"); ?>
+                    text: <?php echo json_encode($city."沼气产量曲线"); ?>
                 },
                 xAxis: {
                     categories: <?php echo json_encode($d_res); ?>
@@ -51,7 +51,7 @@ $gas_avg = $gas_total/count($d_res);
                     }
                 },
                 series: [{
-                    name: <?php echo json_encode($username); ?>,
+                    name: <?php echo json_encode($city); ?>,
                     data: <?php echo json_encode($gas_res); ?>
                 }]
             });
